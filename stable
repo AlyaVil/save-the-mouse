@@ -1,0 +1,46 @@
+Thief thief;
+int celebrate = 30;
+int wait = 10;
+PImage mousecursor;
+PImage sweatdrop;
+PImage heart;
+
+// Setup the Processing Canvas
+void setup() {
+  size(600, 200);
+  thief = new Thief(width*0.5, 170);
+  noCursor();
+  mousecursor = loadImage("cursor.png");
+  sweatdrop = loadImage("sweatdrop.png");
+  heart = loadImage("heart.png");
+  smooth();
+}
+
+// Main draw loop
+void draw() {
+  background(#e7e9d3);
+  stroke(#2b2515);
+  line(0, 180, width, 180);
+  noStroke();
+  fill(#cacd80);
+  rect(0, 181, width, height);
+
+  thief.run();
+}
+
+class Thief {
+  float posx;
+  float posy;
+  int state;
+  boolean animate;
+  int reach;
+  int stretch;
+
+  Thief(float x, float y) {
+    posx = x;
+    posy = y;
+    state = 0;
+    animate = false;
+    reach = 0;
+    stretch = 0;
+  }
