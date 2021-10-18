@@ -230,3 +230,61 @@ void run() {
         image(mousecursor, mouseX, mouseY);
         break;
       }
+case 3: {
+        if (celebrate > 0) {
+          celebrate--;
+          // Heart
+          pushMatrix();
+          translate(posx + 5, posy - 30);
+          scale(0.3, 0.3);
+          image(heart, 0, 0);
+          popMatrix();
+        }
+        pushMatrix();
+        translate(posx, posy);
+        ellipse(0, 0, 30, 30);
+        // Eyes
+        strokeWeight(6);
+        pushMatrix();      
+        translate(5, -4);
+        point(-7, 0);
+        point(7, 0);
+        popMatrix();
+        strokeWeight(3);
+        // Hands
+        if (animate) {
+          pushMatrix();      
+          translate(4, 0);
+          image(mousecursor, 18, -15);
+          ellipse(15, 0, 15, 15);
+          popMatrix();
+        }
+        else {
+          pushMatrix();      
+          translate(6, 0);
+          image(mousecursor, 18, -15);
+          ellipse(15, 0, 15, 15);
+          popMatrix();
+        }
+        // Feet
+        if (animate) {
+          pushMatrix();      
+          translate(3, 19);
+          arc(3, 0, 14, 14, PI, TWO_PI);
+          line(9, 0, -3, 0);
+          arc(-3, 0, 14, 14, PI, TWO_PI);
+          line(-9, 0, 3, 0);
+          popMatrix();
+        }
+        else {
+          pushMatrix();      
+          translate(1, 19);
+          arc(6, 0, 14, 14, PI, TWO_PI);
+          line(12, 0, 0, 0);
+          arc(-4, 0, 14, 14, PI, TWO_PI);
+          line(-10, 0, 2, 0);
+          popMatrix();
+        }
+        popMatrix();
+        break;
+      }
