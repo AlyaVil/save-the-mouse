@@ -288,3 +288,76 @@ case 3: {
         popMatrix();
         break;
       }
+}
+      default: {
+        pushMatrix();
+        if (reach > 0) {
+          translate(posx, posy);
+          if (reach == 3) {
+            image(mousecursor, -5, stretch - 30);
+          }
+          // Arms
+          strokeWeight(2);
+          pushMatrix();
+          translate(0, -15);
+          rect(7, 10, 5, stretch - 10);
+          rect(-12, 10, 5, stretch - 10);
+          for (int i = 0; i > stretch; i--) {
+            if (i == 0) {
+              strokeWeight(1);
+              line(7, i, 12, i);
+              line(-12, i, -7, i);
+            }            
+          }
+          popMatrix();
+          strokeWeight(3);
+          ellipse(0, 0, 30, 30);
+        }
+        else {
+          if (animate) {
+            translate(posx, posy);
+            ellipse(0, 0, 30, 30);
+          }
+          else {
+            translate(posx, posy - 3);
+            ellipse(0, 0, 30, 30);
+          }
+        }
+        // Eyes
+        strokeWeight(6);
+        pushMatrix();
+        translate(0, -7);
+        point(7, 0);
+        point(-7, 0);
+        popMatrix();
+        strokeWeight(3);
+        // Hands
+        if (reach > 0) {
+          pushMatrix();
+          translate(0, -15);
+          ellipse(10, stretch, 15, 15);
+          ellipse(-10, stretch, 15, 15);
+          popMatrix();
+        }
+        else {
+          pushMatrix();      
+          translate(0, -15);
+          ellipse(14, stretch, 15, 15);
+          ellipse(-14, stretch, 15, 15);
+          popMatrix();
+        }
+        // Feet
+        pushMatrix();      
+        translate(0, 19);
+        arc(10, 0, 14, 14, PI, TWO_PI);
+        line(16, 0, 4, 0);
+        arc(-10, 0, 14, 14, PI, TWO_PI);
+        line(-16, 0, -4, 0);
+        popMatrix();
+        popMatrix();
+        if (reach < 3) image(mousecursor, mouseX, mouseY);
+        break;
+      }
+    }
+  }
+}
